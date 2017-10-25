@@ -267,6 +267,8 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
                          sample_data(metadata_in), # metadata for each sample
                          tax_table(taxa), # taxonomy for each sequence variant
                          phy_tree(tree_in)) # phylogeny from sequence variants
+
+melted_phyloseq_obj <- psmelt(phyloseq_obj)
 ```
 
 ```{r species-diversity}
@@ -277,7 +279,18 @@ agg <- aggregate(sequence_table_nochim,
 
 row.names(agg) <- agg$sex
 agg <- agg[2:length(agg)]
-rarecurve(agg)
+rarecurve(agg,
+          main = "Species diversity in male vs female hands")
+```
+
+
+**psmelt
+females habve more diversity, males have more samples, both are an adequate representation of diversity
+-plot richness?
+
+```{r phylogenies common in male and female hands}
+# alpha diversity metrics
+
 ```
 
 
@@ -288,7 +301,7 @@ plot_richness(phyloseq_obj,
               measures = c("Shannon", "Simpson"),
               color = "sex_s") +
   xlab("Sample sex") +
-  ggtitle("Diversiy in male vs female hands") +
+  ggtitle("Alpha diversiy in male vs female hands") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   geom_jitter(width = 0.2) +
   theme_bw()
