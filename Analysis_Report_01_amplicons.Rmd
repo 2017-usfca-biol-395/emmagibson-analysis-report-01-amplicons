@@ -36,6 +36,7 @@ library("tidyr")
 library("knitr")
 library("ggplot2")
 library("vegan")
+library("RColorBrewer")
 
 # this package allows for the easy inclusion of literature citations in our Rmd
 # more info here: https://github.com/crsh/citr
@@ -270,9 +271,13 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
 
 ```{r species-diversity}
 # plots species diversity in male vs female hands
-#sequence_table_nochim %>%
-#group_by()
-rarecurve(sequence_table_nochim)
+agg <- aggregate(sequence_table_nochim,
+          by = list(sex = metadata_in$sex_s),
+          FUN = sum)
+
+row.names(agg) <- agg$sex
+agg <- agg[2:length(agg)]
+rarecurve(agg)
 ```
 
 
