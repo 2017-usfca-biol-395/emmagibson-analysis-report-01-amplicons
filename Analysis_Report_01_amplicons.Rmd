@@ -35,6 +35,7 @@ library("dplyr")
 library("tidyr")
 library("knitr")
 library("ggplot2")
+library("vegan")
 
 # this package allows for the easy inclusion of literature citations in our Rmd
 # more info here: https://github.com/crsh/citr
@@ -267,18 +268,28 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
                          phy_tree(tree_in)) # phylogeny from sequence variants
 ```
 
+```{r species-diversity}
+# plots species diversity in male vs female hands
+#sequence_table_nochim %>%
+#group_by()
+rarecurve(sequence_table_nochim)
+```
+
+
 ```{r example-phyloseq-plot-1}
 # alpha diversity metrics
 plot_richness(phyloseq_obj,
-              x = "env_material_s",
+              x = "sex_s",
               measures = c("Shannon", "Simpson"),
               color = "sex_s") +
-  xlab("Sample origin") +
+  xlab("Sample sex") +
+  ggtitle("Diversiy in male vs female hands") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   geom_jitter(width = 0.2) +
   theme_bw()
 ```
 
-**Figure 1**: Alpha diversity measures of the two sample types, colored by gender.
+Fig 1: Alpha diversity measures of the two sample types, colored by gender.
 
 ```{r example-phyloseq-plot-2}
 # phylogeny, yay!
@@ -287,7 +298,7 @@ plot_tree(phyloseq_obj,
           ladderize = TRUE) # this arranges the tree branches from short to long
 ```
 
-**Figure 2**: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
+Fig 2: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
 
 
 # Discussion
