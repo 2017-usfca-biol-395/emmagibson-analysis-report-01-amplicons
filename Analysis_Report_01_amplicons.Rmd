@@ -305,7 +305,7 @@ plot_richness(subsetted_pls_obj,
 Fig : Alpha diversity measures of the two sample types, colored by gender.
 
 ```{r phylum-by-sex}
-# this code plots the amound of each phylum present in each sex's hands
+# this code plots the abundance of each phylum present in each sex's hands
 plot_bar(subsetted_pls_obj,
          x = "sex_s",
          y = "Abundance",
