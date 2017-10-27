@@ -299,6 +299,7 @@ plot_richness(subsetted_pls_obj,
   geom_boxplot(aes(fill = sex_s),
                width = 0.2) +
   theme_bw() +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   ggtitle("Alpha diversity in male vs female hands")
   scale_color_brewer(palette = "Paired")
 ```
@@ -310,6 +311,7 @@ plot_bar(subsetted_pls_obj,
          x = "sex_s",
          y = "Abundance",
          fill = "Phylum") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   scale_fill_brewer(palette = "Paired")
 ```
 
@@ -320,12 +322,29 @@ plot_richness(phyloseq_obj,
               x = "host_subject_id_s",
               measures = c("Shannon"),
               color = "sample_type_s") +
-  xlab("Sample origin") +
+  xlab("Individual") +
   geom_bar(aes(fill = sample_type_s), 
         stat = "Identity", 
         position = "dodge") +
   ggtitle("Shannon diversity in mice and hands") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   facet_wrap(~ substr(metadata_in$host_subject_id_s, 1, 1), 
+             scales = "free_x")
+```
+
+```{r proteobacteria-in-hands-v-mice}
+
+ggplot(melted_phyloseq_obj,
+        aes(x = host_subject_id_s,
+            y = Abundance,
+        color = sample_type_s)) +
+  xlab("Individual") +
+  geom_bar(aes(fill = sample_type_s), 
+        stat = "Identity", 
+        position = "dodge") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
+  ggtitle("Species abundance in hands and mice") +
+  facet_grid(Phylum ~ substr(melted_phyloseq_obj$host_subject_id_s, 1, 1), 
              scales = "free_x")
 ```
 
