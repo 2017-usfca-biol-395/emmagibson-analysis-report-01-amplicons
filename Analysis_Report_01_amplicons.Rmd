@@ -283,11 +283,8 @@ rarecurve(agg,
           main = "Species diversity in male vs female hands")
 ```
 ###Figure 1. Rarefaction curve of species diversity in male and female hands
-The first graph I made shows rarefaction curvesfor male hand, female hand, and mouse/keyboard samples.
+This figure shows rarefaction curves for male hands, female hands, and mouse/keyboard samples. This type of analysis takes both sample size and sample diversity into account, and functions on the assumption that the more samples are taken from a specific community, the more diversity will be found.
 
-**psmelt
-females habve more diversity, males have more samples, both are an adequate representation of diversity
--plot richness?
 
 ```{r example-phyloseq-plot-1}
 # this code looks at alpha diversity in male vs female hands
@@ -299,12 +296,11 @@ plot_richness(subsetted_pls_obj,
   xlab("Sample origin") +
   geom_boxplot(aes(fill = sex_s),
                width = 0.2) +
-  theme_bw() +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   ggtitle("Alpha diversity in male vs female hands")
-  scale_color_brewer(palette = "Paired")
 ```
-Fig : Alpha diversity measures of the two sample types, colored by gender.
+###Figure 2. Alpha diversity measures in each gender
+This figure shows boxplots that represent the total diversity in both male and femalle hands, using both Shannon and Simpson diversity metrics.
 
 ```{r phylum-by-sex}
 # this code plots the abundance of each phylum present in each sex's hands
@@ -312,9 +308,12 @@ plot_bar(subsetted_pls_obj,
          x = "sex_s",
          y = "Abundance",
          fill = "Phylum") +
+  ggtitle("Abundance of all phylums in each sex") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
   scale_fill_brewer(palette = "Paired")
 ```
+###Figure 3. Abundance of various phylums in each sex
+This figure shows a bar graph that represents the relative abundance of bacterial phylums in each hand, sepparated by sex.
 
 ```{r male-female-hands-vs-mice}
 # this code looks at the differences in diversity between
@@ -329,12 +328,17 @@ plot_richness(phyloseq_obj,
         position = "dodge") +
   ggtitle("Shannon diversity in mice and hands") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
-  facet_wrap(~ substr(metadata_in$host_subject_id_s, 1, 1), 
+# this next line tells R to only consider the first letter
+# of the host ID (M2, F4, etc.), so the figure splits by sex
+  facet_wrap(~ substr(metadata_in$host_subject_id_s, 1, 1),
              scales = "free_x")
 ```
+###Figure 4. Diversity in human hands compared to their respective mice
+This figure shows the Shannon diversity in each human hand, compared to the respective mouse that individual used.
 
 ```{r proteobacteria-in-hands-v-mice, fig.height=7}
-
+# this code looks at the abundance of each phylum in each
+# individual, and again pairs humans with their mice
 ggplot(melted_phyloseq_obj,
         aes(x = host_subject_id_s,
             y = Abundance,
@@ -345,11 +349,12 @@ ggplot(melted_phyloseq_obj,
         position = "dodge") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1),
         strip.text.y = element_text(angle = 360)) +
-  ggtitle("Species abundance in hands and mice") +
+  ggtitle("Phylum abundance in hands and mice") +
   facet_grid(Phylum ~ substr(melted_phyloseq_obj$host_subject_id_s, 1, 1), 
              scales = "free_x")
 ```
-
+###Figure 5. Abundance of each phylum in human hands and their respective mice
+This figure shows the overall abundance of each phylum in each individual. Once again, it distinguished between each subject's hand and their respective mouse.
 
 ```{r example-phyloseq-plot-2}
 # phylogeny, yay!
