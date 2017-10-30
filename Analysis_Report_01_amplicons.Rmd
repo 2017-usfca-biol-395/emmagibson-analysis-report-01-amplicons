@@ -15,11 +15,11 @@ Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
 
 ## Sample origin and sequencing
 
-Add about half a page here. In this section instead of first person (I/we), use Fierer et al., since you'll just be describing what they did, based on the methods in their paper.
+Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput pyrosequencing of the 16S ribosomal gene.
 
 ## Computational
 
-These are the methods you used. Should probably be at least a half of a page. At a very minimum should include citations for DADA2 [@callahan2016] and phyloseq [@mcmurdie2013]. Note that these don't count towards the five references you need to cite in the introduction.
+I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences [@callahan2016]. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data [@mcmurdie2013].
 
 # Results
 
@@ -282,7 +282,8 @@ agg <- agg[2:length(agg)]
 rarecurve(agg,
           main = "Species diversity in male vs female hands")
 ```
-
+###Figure 1. Rarefaction curve of species diversity in male and female hands
+The first graph I made shows rarefaction curvesfor male hand, female hand, and mouse/keyboard samples.
 
 **psmelt
 females habve more diversity, males have more samples, both are an adequate representation of diversity
@@ -332,7 +333,7 @@ plot_richness(phyloseq_obj,
              scales = "free_x")
 ```
 
-```{r proteobacteria-in-hands-v-mice}
+```{r proteobacteria-in-hands-v-mice, fig.height=7}
 
 ggplot(melted_phyloseq_obj,
         aes(x = host_subject_id_s,
@@ -342,7 +343,8 @@ ggplot(melted_phyloseq_obj,
   geom_bar(aes(fill = sample_type_s), 
         stat = "Identity", 
         position = "dodge") +
-  theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1),
+        strip.text.y = element_text(angle = 360)) +
   ggtitle("Species abundance in hands and mice") +
   facet_grid(Phylum ~ substr(melted_phyloseq_obj$host_subject_id_s, 1, 1), 
              scales = "free_x")
