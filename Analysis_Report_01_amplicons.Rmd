@@ -15,11 +15,15 @@ Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
 
 ## Sample origin and sequencing
 
-Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput pyrosequencing of the 16S ribosomal gene.
+Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput 454 pyrosequencing, one of several next-generation techniques. They sequenced the 16S ribosomal gene, a gene that is conserved acros all of life and is conventionally used to identify bacterium.
 
 ## Computational
 
-I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences [@callahan2016]. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data [@mcmurdie2013].
+DSATDFHGJADJHGFDJGHAFDJGDSFAHGDFSAJHWRITE MORE ABOUT DADA2
+
+I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data [@mcmurdie2013].
+
+DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases [@callahan2016]. 
 
 # Results
 
@@ -367,7 +371,8 @@ plot_tree(phyloseq_obj,
           ladderize = TRUE) # this arranges the tree branches from short to long
 ```
 
-Fig 2: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
+###Figure 2: Inferred phylogeny of sequences
+This figure shows a phylogenetic tree with points on tips representing samples within which each particular taxa occurred. This tree represents maximum likelihood phylogeny inferred using RAxML.
 
 
 # Discussion

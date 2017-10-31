@@ -14,12 +14,16 @@ Methods
 Sample origin and sequencing
 ----------------------------
 
-Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput pyrosequencing of the 16S ribosomal gene.
+Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput 454 pyrosequencing, one of several next-generation techniques. They sequenced the 16S ribosomal gene, a gene that is conserved acros all of life and is conventionally used to identify bacterium.
 
 Computational
 -------------
 
-I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences (Callahan *et al.*, 2016). Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data (McMurdie and Holmes, 2013).
+DSATDFHGJADJHGFDJGHAFDJGDSFAHGDFSAJHWRITE MORE ABOUT DADA2
+
+I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data (McMurdie and Holmes, 2013).
+
+DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases (Callahan *et al.*, 2016).
 
 Results
 =======
@@ -621,7 +625,7 @@ unname(taxa)
     ##   [5,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##   [6,] "Bacteria" "Cyanobacteria/Chloroplast" "Chloroplast"        
     ##   [7,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
-    ##   [8,] "Bacteria" "Bacteroidetes"             "Cytophagia"         
+    ##   [8,] "Bacteria" "Bacteroidetes"             NA                   
     ##   [9,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
     ##  [10,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##  [11,] "Bacteria" "Proteobacteria"            NA                   
@@ -672,7 +676,7 @@ unname(taxa)
     ##  [56,] "Bacteria" "Actinobacteria"            "Actinobacteria"     
     ##  [57,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [58,] "Bacteria" "Proteobacteria"            "Gammaproteobacteria"
-    ##  [59,] "Bacteria" "Proteobacteria"            NA                   
+    ##  [59,] "Bacteria" NA                          NA                   
     ##  [60,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [61,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [62,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
@@ -779,7 +783,7 @@ unname(taxa)
     ## [163,] "Bacteria" "Firmicutes"                "Bacilli"            
     ## [164,] "Bacteria" "Firmicutes"                "Clostridia"         
     ## [165,] "Bacteria" "Nitrospirae"               "Nitrospira"         
-    ## [166,] "Bacteria" "Parcubacteria"             NA                   
+    ## [166,] "Bacteria" NA                          NA                   
     ## [167,] "Bacteria" "Firmicutes"                "Bacilli"            
     ## [168,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ## [169,] "Bacteria" "Bacteroidetes"             "Sphingobacteriia"   
@@ -798,7 +802,7 @@ unname(taxa)
     ##   [5,] "Neisseriales"       "Neisseriaceae"       
     ##   [6,] "Chloroplast"        "Streptophyta"        
     ##   [7,] "Burkholderiales"    "Comamonadaceae"      
-    ##   [8,] "Cytophagales"       NA                    
+    ##   [8,] NA                   NA                    
     ##   [9,] "Rhizobiales"        "Bartonellaceae"      
     ##  [10,] "Burkholderiales"    "Oxalobacteraceae"    
     ##  [11,] NA                   NA                    
@@ -952,7 +956,7 @@ unname(taxa)
     ## [159,] "Lactobacillales"    "Carnobacteriaceae"   
     ## [160,] "Flavobacteriales"   "Flavobacteriaceae"   
     ## [161,] "Fusobacteriales"    "Leptotrichiaceae"    
-    ## [162,] "Clostridiales"      NA                    
+    ## [162,] "Clostridiales"      "Ruminococcaceae"     
     ## [163,] "Bacillales"         "Bacillaceae_1"       
     ## [164,] "Clostridiales"      NA                    
     ## [165,] "Nitrospirales"      "Nitrospiraceae"      
@@ -1015,7 +1019,7 @@ unname(taxa)
     ##  [45,] "Pseudomonas"              
     ##  [46,] "Streptomyces"             
     ##  [47,] NA                         
-    ##  [48,] NA                         
+    ##  [48,] "Pelomonas"                
     ##  [49,] "Microbacterium"           
     ##  [50,] "Mycobacterium"            
     ##  [51,] NA                         
@@ -1032,7 +1036,7 @@ unname(taxa)
     ##  [62,] "Microvirga"               
     ##  [63,] NA                         
     ##  [64,] "Arthrobacter"             
-    ##  [65,] NA                         
+    ##  [65,] "Marmoricola"              
     ##  [66,] "Microbacterium"           
     ##  [67,] "Sphingomonas"             
     ##  [68,] NA                         
@@ -1047,7 +1051,7 @@ unname(taxa)
     ##  [77,] "Nocardia"                 
     ##  [78,] "Nocardioides"             
     ##  [79,] "Subtercola"               
-    ##  [80,] NA                         
+    ##  [80,] "Butyricicoccus"           
     ##  [81,] "Cloacibacterium"          
     ##  [82,] "Microbacterium"           
     ##  [83,] "Sphingomonas"             
@@ -1069,7 +1073,7 @@ unname(taxa)
     ##  [99,] "Knoellia"                 
     ## [100,] NA                         
     ## [101,] NA                         
-    ## [102,] NA                         
+    ## [102,] "Oscillibacter"            
     ## [103,] "Blautia"                  
     ## [104,] "Aeromicrobium"            
     ## [105,] NA                         
@@ -1107,7 +1111,7 @@ unname(taxa)
     ## [137,] "Stappia"                  
     ## [138,] NA                         
     ## [139,] "Massilia"                 
-    ## [140,] NA                         
+    ## [140,] "Erysipelothrix"           
     ## [141,] "Mycobacterium"            
     ## [142,] "Microbacterium"           
     ## [143,] NA                         
@@ -1137,7 +1141,7 @@ unname(taxa)
     ## [167,] "Paenibacillus"            
     ## [168,] NA                         
     ## [169,] "Flavitalea"               
-    ## [170,] NA                         
+    ## [170,] "Tessaracoccus"            
     ## [171,] "Rhodopseudomonas"         
     ## [172,] NA                         
     ## [173,] "Catabacter"               
@@ -1325,7 +1329,9 @@ plot_tree(phyloseq_obj,
 
 ![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/example-phyloseq-plot-2-1.png)
 
-Fig 2: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
+### Figure 2: Inferred phylogeny of sequences
+
+This figure shows a phylogenetic tree with points on tips representing samples within which each particular taxa occurred. This tree represents maximum likelihood phylogeny inferred using RAxML.
 
 Discussion
 ==========
