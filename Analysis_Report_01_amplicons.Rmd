@@ -336,7 +336,7 @@ plot_richness(phyloseq_obj,
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
 # this next line tells R to only consider the first letter
 # of the host ID (M2, F4, etc.), so the figure splits by sex
-  facet_wrap(~ substr(metadata_in$host_subject_id_s, 1, 1),
+  facet_wrap(~ rep(c("F", "M"), each = 10),
              scales = "free_x")
 ```
 
@@ -371,7 +371,7 @@ plot_tree(phyloseq_obj,
           ladderize = TRUE) # this arranges the tree branches from short to long
 ```
 
-###Figure 2: Inferred phylogeny of sequences
+###Figure 6: Inferred phylogeny of sequences
 This figure shows a phylogenetic tree with points on tips representing samples within which each particular taxa occurred. This tree represents maximum likelihood phylogeny inferred using RAxML.
 
 
