@@ -19,15 +19,11 @@ Fierer *et al.* obtained the original samples from human volunteers and the keyb
 
 ## Computational
 
-DSATDFHGJADJHGFDJGHAFDJGDSFAHGDFSAJHWRITE MORE ABOUT DADA2
-
 I processed and analyzed the sequence data using a combination of bash and R. First, I used bash to process the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data [@mcmurdie2013].
 
-DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases [@callahan2016]. 
+DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases [@callahan2016]. Next, it can remove chimeras, which are sequences that are mare up of two parent sequences that result from sequencing errors. Lastly, it merges paired forward and reverse reads after all the sequences have been cleaned and de-noised, so that DADA2 can be extremely strict and require exact overlap.
 
 # Results
-
-In addition to a minimum of 3-4 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the results section you just describe what you found, but you don't interpret it - that happens in the discussion.
 
 ```{r load-libraries, message = FALSE}
 # Be sure to install these packages before running this script
@@ -331,7 +327,7 @@ plot_richness(phyloseq_obj,
               color = "sample_type_s") +
   xlab("Individual") +
   geom_bar(aes(fill = sample_type_s),
-        stat = "Identity", 
+        stat = "Identity",
         position = "dodge") +
   ggtitle("Shannon diversity in mice and hands") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
