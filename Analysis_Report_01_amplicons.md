@@ -1,4 +1,4 @@
-Analysis Report 1: Your Title Here
+Analysis Report 1: The relationship of human skin microbiome to host sex and environmental interactions
 ================
 Emma Gibson
 November 1, 2017
@@ -6,7 +6,11 @@ November 1, 2017
 Introduction
 ============
 
-Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
+In recent years, the bacteria that live on and inside the human body have become a major subject of interest, as improved sequencing techniques make it easier than ever to study the previously unobservable microscopic world. Of the numerous microbial ecosystems that exist throughout the human body, few are as dynamic or diverse as that of the human skin. For example, even the microbiome on the left and right hands of the same person can have fairly few organisms in common. (Caporaso *et al.*, 2011) Because the skin microbiome is known to have an impact on and serve as an indicator of its host's health, it is important to study it and understand what its patterns reveal about its hosts. (Fredricks, 2001)
+
+The skin microbiome's community composition can vary not only depending on what part of the body it is sampled from, but also from individual to individual. (Costello *et al.*, 2009) Although the differences in skin microbiome between individuals are great, there are notable correlations between the microbial community composition between people of the same handedness, hygiene habits, and sex. (Fierer *et al.*, 2008) Therefore, understanding and analyzing the patterns associated with the human skin microbiome could potentially allow one to infer information about its host.
+
+The skin microbiome is not only unique to the skin of its host, however. It has been shown that a human leaves microbial evidence of their presence on the inanimate objects they interact with, tho the point where one can accurately identify what house belongs to what family based on microbial evidence. (Lax *et al.*, 2014) Although its usefulness in a field like forensics might be questionable due to the ever-changing nature of the human skin microbiome, understanding the patterns that arise from peoples' skin microbiomes could lead to a greater comprehension of how human interactions with their environment leave an impact on said environment. (Costello *et al.*, 2009) Using human hand microbiome information from a paper by Fierer *et al.*, I investigated what differences, if any, existed between the skin microbiomes of male and female individuals, as well as how that microbiome information could be tracked through the objects they have touched.
 
 Methods
 =======
@@ -621,7 +625,7 @@ unname(taxa)
     ##   [5,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##   [6,] "Bacteria" "Cyanobacteria/Chloroplast" "Chloroplast"        
     ##   [7,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
-    ##   [8,] "Bacteria" "Bacteroidetes"             NA                   
+    ##   [8,] "Bacteria" "Bacteroidetes"             "Cytophagia"         
     ##   [9,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
     ##  [10,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##  [11,] "Bacteria" "Proteobacteria"            NA                   
@@ -676,7 +680,7 @@ unname(taxa)
     ##  [60,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [61,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [62,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
-    ##  [63,] "Bacteria" "Firmicutes"                "Clostridia"         
+    ##  [63,] "Bacteria" "Firmicutes"                NA                   
     ##  [64,] "Bacteria" "Actinobacteria"            "Actinobacteria"     
     ##  [65,] "Bacteria" "Actinobacteria"            "Actinobacteria"     
     ##  [66,] "Bacteria" "Actinobacteria"            "Actinobacteria"     
@@ -798,7 +802,7 @@ unname(taxa)
     ##   [5,] "Neisseriales"       "Neisseriaceae"       
     ##   [6,] "Chloroplast"        "Streptophyta"        
     ##   [7,] "Burkholderiales"    "Comamonadaceae"      
-    ##   [8,] NA                   NA                    
+    ##   [8,] "Cytophagales"       NA                    
     ##   [9,] "Rhizobiales"        "Bartonellaceae"      
     ##  [10,] "Burkholderiales"    "Oxalobacteraceae"    
     ##  [11,] NA                   NA                    
@@ -853,7 +857,7 @@ unname(taxa)
     ##  [60,] "Clostridiales"      "Ruminococcaceae"     
     ##  [61,] "Clostridiales"      "Ruminococcaceae"     
     ##  [62,] "Rhizobiales"        "Methylobacteriaceae" 
-    ##  [63,] "Clostridiales"      NA                    
+    ##  [63,] NA                   NA                    
     ##  [64,] "Actinomycetales"    "Micrococcaceae"      
     ##  [65,] "Actinomycetales"    "Nocardioidaceae"     
     ##  [66,] "Actinomycetales"    "Microbacteriaceae"   
@@ -933,7 +937,7 @@ unname(taxa)
     ## [140,] "Erysipelotrichales" "Erysipelotrichaceae" 
     ## [141,] "Actinomycetales"    "Mycobacteriaceae"    
     ## [142,] "Actinomycetales"    "Microbacteriaceae"   
-    ## [143,] "Clostridiales"      "Ruminococcaceae"     
+    ## [143,] "Clostridiales"      NA                    
     ## [144,] "Actinomycetales"    "Propionibacteriaceae"
     ## [145,] "Clostridiales"      "Ruminococcaceae"     
     ## [146,] "Actinomycetales"    "Nocardioidaceae"     
@@ -952,7 +956,7 @@ unname(taxa)
     ## [159,] "Lactobacillales"    "Carnobacteriaceae"   
     ## [160,] "Flavobacteriales"   "Flavobacteriaceae"   
     ## [161,] "Fusobacteriales"    "Leptotrichiaceae"    
-    ## [162,] "Clostridiales"      "Ruminococcaceae"     
+    ## [162,] "Clostridiales"      NA                    
     ## [163,] "Bacillales"         "Bacillaceae_1"       
     ## [164,] "Clostridiales"      NA                    
     ## [165,] "Nitrospirales"      "Nitrospiraceae"      
@@ -963,7 +967,7 @@ unname(taxa)
     ## [170,] "Actinomycetales"    "Propionibacteriaceae"
     ## [171,] "Rhizobiales"        "Bradyrhizobiaceae"   
     ## [172,] "Clostridiales"      NA                    
-    ## [173,] "Clostridiales"      NA                    
+    ## [173,] "Clostridiales"      "Catabacteriaceae"    
     ## [174,] "Actinomycetales"    NA                    
     ## [175,] "Pasteurellales"     "Pasteurellaceae"     
     ## [176,] "Actinomycetales"    "Microbacteriaceae"   
@@ -989,7 +993,7 @@ unname(taxa)
     ##  [19,] NA                         
     ##  [20,] "Diaphorobacter"           
     ##  [21,] NA                         
-    ##  [22,] "Intestinimonas"           
+    ##  [22,] NA                         
     ##  [23,] NA                         
     ##  [24,] NA                         
     ##  [25,] "Pelomonas"                
@@ -1009,13 +1013,13 @@ unname(taxa)
     ##  [39,] NA                         
     ##  [40,] "Cloacibacterium"          
     ##  [41,] "Streptococcus"            
-    ##  [42,] NA                         
+    ##  [42,] "Oscillibacter"            
     ##  [43,] "Azonexus"                 
     ##  [44,] NA                         
     ##  [45,] "Pseudomonas"              
     ##  [46,] "Streptomyces"             
     ##  [47,] NA                         
-    ##  [48,] "Pelomonas"                
+    ##  [48,] NA                         
     ##  [49,] "Microbacterium"           
     ##  [50,] "Mycobacterium"            
     ##  [51,] "Marmoricola"              
@@ -1115,7 +1119,7 @@ unname(taxa)
     ## [145,] "Pseudoflavonifractor"     
     ## [146,] "Nocardioides"             
     ## [147,] NA                         
-    ## [148,] "Arachidicoccus"           
+    ## [148,] NA                         
     ## [149,] "Ruminococcus"             
     ## [150,] NA                         
     ## [151,] NA                         
@@ -1140,7 +1144,7 @@ unname(taxa)
     ## [170,] "Tessaracoccus"            
     ## [171,] "Rhodopseudomonas"         
     ## [172,] NA                         
-    ## [173,] NA                         
+    ## [173,] "Catabacter"               
     ## [174,] NA                         
     ## [175,] "Nicoletella"              
     ## [176,] "Agrococcus"
@@ -1345,23 +1349,37 @@ This figure shows a phylogeny tree with points on tips representing samples with
 Discussion
 ==========
 
-In my analysis of this data, I focused on the interaction between gender and hand microbiome, as well as the reletionship between one's hand microbiome and the inanimate objects they interact with. For human subjects of either sex, and for mouse samples as well, I found that Fierer *et al.* appeared to have samples the full range of bacterial community diversity. Despite the varying sample sizes, every curve in the rarefaction curve forms a plateau after its initially steep incline, indicating that even if more samples were to be included, it is unlikely that the amount of diversity found would change significantly (fig 1). One possible explanation for this is that a larger sample size per individual could have lead to an oversaturation of the most common phylums, therefore reducing the apparent diversity by comparison.
+In my analysis of this data, I focused on the interaction between gender and hand microbiome, as well as the relationship between one's hand microbiome and the inanimate objects they interact with. For human subjects of either sex, and for mouse samples as well, I found that Fierer *et al.* appeared to have samples the full range of bacterial community diversity. Despite the varying sample sizes, every curve in the rarefaction curve forms a plateau after its initially steep incline, indicating that even if more samples were to be included, it is unlikely that the amount of diversity found would change significantly (fig 1). One possible explanation for this is that a larger sample size per individual could have lead to an over saturation of the most common phylums, therefore reducing the apparent diversity by comparison.
 
 Despite the fact that there was a greater number of sequences for male test subjects, they showed less overall diversity than females, no matter which alpha diversity metrics are used (fig. 2). However, both male and female hands show wide variability in diversity between individuals, as shown by the outliers (fig. 2) In order to accurately determine whether the male or female hand microbiome is more diverse, a larger number of individuals would be needed.
 
-Of all the phylums present on human test subjects, the most abundant in both male and female hands was *proteobacteria* (fig. 3). Hoewver, it was vastly more common in male hands in terms of both overall abundance and proportion of the overall community makeup (fig. 3). This abundance of *proteobacteria* could be the reason that male hands show significantly lower diversity than female hands. That said, because *proteobacteria* is amassive and diverse phylum, it is hard to draw conclusions about what its abundance on human hands indicates about its hosts.
+Of all the phylums present on human test subjects, the most abundant in both male and female hands was *proteobacteria* (fig. 3). However, it was vastly more common in male hands in terms of both overall abundance and proportion of the overall community makeup (fig. 3). This abundance of *proteobacteria* could be the reason that male hands show significantly lower diversity than female hands. That said, because *proteobacteria* is a massive and diverse phylum, it is hard to draw conclusions about what its abundance on human hands indicates about its hosts.
 
-While *proteobacteria* is present in nearly every individual, most of the less-abundant plylums are only found in one or two of the individuals (fig. 4). That said, there are several phylums that have smallabundance in each undividual, but a larger abundance intjier respective sex as a whole. For example, *actinobacteria* is the second most common phylum in female hands (fig. 3), but none of the female hands or mice have a perticularly large abundance of it (fig. 4). This is unsuprising, as *actinobacteria* is a plylum of relatively common soil bacteriumthat one might expect to find in the environment, but would not necesarily thrive on a human hand. The *firmicutes* phylum shows a similar abundance pattern in both sexes, where it is present in small quantities on nearly every individual's hand (fig. 4). Like *proteobacteria*, *firmicutes* contains a wide variety of species, from pathogens to common gut symbiotes. (<span class="citeproc-not-found" data-reference-id="LEY2006837">**???**</span>) Therefore, it is unsuprising to find this phylum on human hands, as is known to exist in other parts of the body.
+While *proteobacteria* is present in nearly every individual, most of the less-abundant phylums are only found in one or two of the individuals (fig. 4). That said, there are several phylums that have small abundance in each individual, but a larger abundance in thier respective sex as a whole. For example, *actinobacteria* is the second most common phylum in female hands (fig. 3), but none of the female hands or mice have a particularly large abundance of it (fig. 4). This is unsurprising, as *actinobacteria* is a phylum of relatively common soil bacterium that one might expect to find in the environment, but would not necessarily thrive on a human hand. The *firmicutes* phylum shows a similar abundance pattern in both sexes, where it is present in small quantities on nearly every individual's hand (fig. 4). Like *proteobacteria*, *firmicutes* contains a wide variety of species, from pathogens to common gut symbiotes. (Ley *et al.*, 2006) Therefore, it is unsurprising to find this phylum on human hands, as is known to exist in other parts of the body.
 
-There does not appear to be a phylum that is prominently found on mice, but absent on human hands (fig. 4). However, the opposite is not true in all cases. For example, while the *bacteroidetes* phylum was found in great abundance on several female hands, neither of their respective mice nor any of the other mice show a great abundance of this phylum (fig. 4). It makes sense that *bacteroidetes* was more common on female hands than male hands, given that it is known to be part of the placenta microbiome, and its prominence on these womens' hands could indicate several thins about their physiological state (<span class="citeproc-not-found" data-reference-id="MOR2015S131">**???**</span>). For instance, they could be pregnant or in a different phase of their menstral cycle from the other female test subjects. However, this would not explain why it was so abundant on their hands, yet absent on the computer mice they used.
+There does not appear to be a phylum that is prominently found on mice, but absent on human hands (fig. 4). However, the opposite is not true in all cases. For example, while the *bacteroidetes* phylum was found in great abundance on several female hands, neither of their respective mice nor any of the other mice show a great abundance of this phylum (fig. 4). It makes sense that *bacteroidetes* was more common on female hands than male hands, given that it is known to be part of the placenta microbiome, and its prominence on these womens' hands could indicate several thins about their physiological state (Mor and Kwon, 2015). For instance, they could be pregnant or in a different phase of their menstrual cycle from the other female test subjects. However, this would not explain why it was so abundant on their hands, yet absent on the computer mice they used.
 
-There also appears to be a difference in the amount of diversity between male and female hands and the objects they have touched, as well. Whereas all but one female has more diversity on her hand than on the mouse she touched, the opposite is true in males (fig. 5). While this could be due to the generally low diversity in male hands, this seems unlikely because the diversity on males' mice is not simply higher than the diversity of male hands, but also higher than the diversity in females' mice (fig 5).
+There also appears to be a difference in the amount of diversity between male and female hands and the objects they have touched, as well. Whereas all but one female has more diversity on her hand than on the mouse she touched, the opposite is true in males (fig. 5). While this could be due to the generally low diversity in male hands, this seems unlikely because the diversity on males' mice is not simply higher than the diversity of male hands, but also higher than the diversity in females' mice (fig 5). This could be due to the fact that *proteobacteria* is less abundant in male computer mice than it is in male hands (fig. 4).
 
-A phylogenetic tree of all of the obtained sequences shows that while distinct clades form, there is no apparent pattern between clades and host individuals. There appears to be no strong correlations of certain clades belonging primarily to one indivitual's hand and mouse biome (fig. 6A). While there may be a couple of close nodes that belong to the same individual, there are no large clades that correlate to any one individual. Every large clade appears to contain samples from both sexes as well, although there are several clades that do not contain the 'Not Applicable' sex given to mouse samples (fig. 6B). This indicates that these clades contain bacteria that is more specifically adapted to the human body, because they were found only on hands and not on mice.
+A phylogenetic tree of all of the obtained sequences shows that while distinct clades form, there is no apparent pattern between clades and host individuals. There appears to be no strong correlations of certain clades belonging primarily to one individual's hand and mouse biome (fig. 6A). While there may be a couple of close nodes that belong to the same individual, there are no large clades that correlate to any one individual. Every large clade appears to contain samples from both sexes as well, although there are several clades that do not contain the 'Not Applicable' sex given to mouse samples (fig. 6B). This indicates that these clades contain bacteria that is more specifically adapted to the human body, because they were found only on hands and not on mice.
 
 Sources Cited
 =============
 
 Callahan,B.J. *et al.* (2016) DADA2: High-resolution sample inference from illumina amplicon data. *Nature Methods*, **13**, 581–583.
 
+Caporaso,J.G. *et al.* (2011) Moving pictures of the human microbiome. *Genome Biology*, **12**, R50.
+
+Costello,E.K. *et al.* (2009) Bacterial community variation in human body habitats across space and time. *Science*, **326**, 1694–1697.
+
+Fierer,N. *et al.* (2008) The influence of sex, handedness, and washing on the diversity of hand surface bacteria. *Proceedings of the National Academy of Sciences of the United States of America*, **105**, 17994–17999.
+
+Fredricks,D.N. (2001) Microbial ecology of human skin in health and disease. *Journal of Investigative Dermatology Symposium Proceedings*, **6**, 167–169.
+
+Lax,S. *et al.* (2014) Longitudinal analysis of microbial interaction between humans and the indoor environment. *Science*, **345**, 1048–1052.
+
+Ley,R.E. *et al.* (2006) Ecological and evolutionary forces shaping microbial diversity in the human intestine. *Cell*, **124**, 837–848.
+
 McMurdie,P.J. and Holmes,S. (2013) Phyloseq: An r package for reproducible interactive analysis and graphics of microbiome census data. *PLoS ONE*, **8**, e61217.
+
+Mor,G. and Kwon,J.-Y. (2015) Trophoblast-microbiome interaction: A new paradigm on immune regulation. *American Journal of Obstetrics and Gynecology*, **213**, S131–S137.
