@@ -14,21 +14,17 @@ Methods
 Sample origin and sequencing
 ----------------------------
 
-Fierer *et al.* obtained the riginal samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees celcius for less than a week before DNA extraction.Fierer *et al.* obtained the becterial gene sequences using high-throughput 454 pyrosequencing, one of several next-generation techniques. They sequenced the 16S ribosomal gene, a gene that is conserved acros all of life and is conventionally used to identify bacterium.
+Fierer *et al.* obtained the original samples from human volunteers and the keyboards/mice they touched. They collected them with sterilized cotton-tipped swabs that had been moistened by a sterile solution. They swabbed the hands midday, and swabbed the mice and keyboards within 12 hours of being used by their respective owners. All of the subjects they sampled were healthy, between 20-35 years old, and had not taken antibiotics 6 months before the sampling. They stored all swabs at -80 degrees Celsius for less than a week before DNA extraction.Fierer *et al.* obtained the bacterial gene sequences using high-throughput 454 pyrosequencing, one of several next-generation techniques. They sequenced the 16S ribosomal gene, a gene that is conserved across all of life and is conventionally used to identify bacterium.
 
 Computational
 -------------
 
-DSATDFHGJADJHGFDJGHAFDJGDSFAHGDFSAJHWRITE MORE ABOUT DADA2
+I processed and analyzed the sequence data using a combination of bash and R. First, I used bash to process the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data (McMurdie and Holmes, 2013).
 
-I proscessed and analyzed the sequence data using a combination of bash and R. First, I used bash to proscess the samples in order to determine their length and quality. Sequences of sufficient quality were then analyzed in R, using all of the relevant metadata and sequence information. R analyses were conducted through the usage of base R, as well as vegan, DADA2, and phyloseq. Vegan was used for various statistical analyses, such as to create rarefaction curves. Phyloseq was used to add various microbiome-specific functions to ggplot in order to better visualize the data (McMurdie and Holmes, 2013).
-
-DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases (Callahan *et al.*, 2016).
+DADA2 was used for inter-sequence analysis, such as forming OTUs and resolving minor sequence differences. The DADA2 pipeline begins with filtering paired fastq files by trimming them to a specific length and removing sequences that are too short, then further filtering based on number of expected errors, quality score, and number of ambiguous bases (Callahan *et al.*, 2016). Next, it can remove chimeras, which are sequences that are mare up of two parent sequences that result from sequencing errors. Lastly, it merges paired forward and reverse reads after all the sequences have been cleaned and de-noised, so that DADA2 can be extremely strict and require exact overlap.
 
 Results
 =======
-
-In addition to a minimum of 3-4 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the results section you just describe what you found, but you don't interpret it - that happens in the discussion.
 
 ``` r
 # Be sure to install these packages before running this script
@@ -625,7 +621,7 @@ unname(taxa)
     ##   [5,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##   [6,] "Bacteria" "Cyanobacteria/Chloroplast" "Chloroplast"        
     ##   [7,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
-    ##   [8,] "Bacteria" "Bacteroidetes"             NA                   
+    ##   [8,] "Bacteria" "Bacteroidetes"             "Cytophagia"         
     ##   [9,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
     ##  [10,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ##  [11,] "Bacteria" "Proteobacteria"            NA                   
@@ -802,7 +798,7 @@ unname(taxa)
     ##   [5,] "Neisseriales"       "Neisseriaceae"       
     ##   [6,] "Chloroplast"        "Streptophyta"        
     ##   [7,] "Burkholderiales"    "Comamonadaceae"      
-    ##   [8,] NA                   NA                    
+    ##   [8,] "Cytophagales"       NA                    
     ##   [9,] "Rhizobiales"        "Bartonellaceae"      
     ##  [10,] "Burkholderiales"    "Oxalobacteraceae"    
     ##  [11,] NA                   NA                    
@@ -821,7 +817,7 @@ unname(taxa)
     ##  [24,] "Clostridiales"      "Lachnospiraceae"     
     ##  [25,] "Burkholderiales"    "Comamonadaceae"      
     ##  [26,] "Chloroplast"        "Streptophyta"        
-    ##  [27,] "Clostridiales"      "Ruminococcaceae"     
+    ##  [27,] "Clostridiales"      NA                    
     ##  [28,] "Actinomycetales"    "Streptomycetaceae"   
     ##  [29,] "Clostridiales"      "Ruminococcaceae"     
     ##  [30,] "Sphingomonadales"   "Sphingomonadaceae"   
@@ -951,7 +947,7 @@ unname(taxa)
     ## [154,] NA                   NA                    
     ## [155,] NA                   NA                    
     ## [156,] "Clostridiales"      "Ruminococcaceae"     
-    ## [157,] "Clostridiales"      "Ruminococcaceae"     
+    ## [157,] "Clostridiales"      NA                    
     ## [158,] "Clostridiales"      NA                    
     ## [159,] "Lactobacillales"    "Carnobacteriaceae"   
     ## [160,] "Flavobacteriales"   "Flavobacteriaceae"   
@@ -967,7 +963,7 @@ unname(taxa)
     ## [170,] "Actinomycetales"    "Propionibacteriaceae"
     ## [171,] "Rhizobiales"        "Bradyrhizobiaceae"   
     ## [172,] "Clostridiales"      NA                    
-    ## [173,] "Clostridiales"      "Catabacteriaceae"    
+    ## [173,] "Clostridiales"      NA                    
     ## [174,] "Actinomycetales"    NA                    
     ## [175,] "Pasteurellales"     "Pasteurellaceae"     
     ## [176,] "Actinomycetales"    "Microbacteriaceae"   
@@ -1002,9 +998,9 @@ unname(taxa)
     ##  [28,] "Streptomyces"             
     ##  [29,] NA                         
     ##  [30,] "Sphingobium"              
-    ##  [31,] NA                         
+    ##  [31,] "Marmoricola"              
     ##  [32,] "Streptomyces"             
-    ##  [33,] "Salinibacterium"          
+    ##  [33,] NA                         
     ##  [34,] "Streptomyces"             
     ##  [35,] "Ruminococcus"             
     ##  [36,] "Methylotenera"            
@@ -1019,13 +1015,13 @@ unname(taxa)
     ##  [45,] "Pseudomonas"              
     ##  [46,] "Streptomyces"             
     ##  [47,] NA                         
-    ##  [48,] "Pelomonas"                
+    ##  [48,] NA                         
     ##  [49,] "Microbacterium"           
     ##  [50,] "Mycobacterium"            
     ##  [51,] NA                         
     ##  [52,] NA                         
     ##  [53,] "Streptomyces"             
-    ##  [54,] NA                         
+    ##  [54,] "Sphingosinicella"         
     ##  [55,] NA                         
     ##  [56,] NA                         
     ##  [57,] "Oscillibacter"            
@@ -1036,7 +1032,7 @@ unname(taxa)
     ##  [62,] "Microvirga"               
     ##  [63,] NA                         
     ##  [64,] "Arthrobacter"             
-    ##  [65,] "Marmoricola"              
+    ##  [65,] NA                         
     ##  [66,] "Microbacterium"           
     ##  [67,] "Sphingomonas"             
     ##  [68,] NA                         
@@ -1051,7 +1047,7 @@ unname(taxa)
     ##  [77,] "Nocardia"                 
     ##  [78,] "Nocardioides"             
     ##  [79,] "Subtercola"               
-    ##  [80,] "Butyricicoccus"           
+    ##  [80,] NA                         
     ##  [81,] "Cloacibacterium"          
     ##  [82,] "Microbacterium"           
     ##  [83,] "Sphingomonas"             
@@ -1073,7 +1069,7 @@ unname(taxa)
     ##  [99,] "Knoellia"                 
     ## [100,] NA                         
     ## [101,] NA                         
-    ## [102,] "Oscillibacter"            
+    ## [102,] NA                         
     ## [103,] "Blautia"                  
     ## [104,] "Aeromicrobium"            
     ## [105,] NA                         
@@ -1119,7 +1115,7 @@ unname(taxa)
     ## [145,] "Pseudoflavonifractor"     
     ## [146,] "Nocardioides"             
     ## [147,] NA                         
-    ## [148,] NA                         
+    ## [148,] "Arachidicoccus"           
     ## [149,] "Ruminococcus"             
     ## [150,] NA                         
     ## [151,] NA                         
@@ -1144,7 +1140,7 @@ unname(taxa)
     ## [170,] "Tessaracoccus"            
     ## [171,] "Rhodopseudomonas"         
     ## [172,] NA                         
-    ## [173,] "Catabacter"               
+    ## [173,] NA                         
     ## [174,] NA                         
     ## [175,] "Nicoletella"              
     ## [176,] "Agrococcus"
@@ -1209,7 +1205,8 @@ aggregated_sequence_data <- aggregate(sequence_table_nochim,
                             by = list(sex = metadata_in$sex_s),
                             FUN = sum)
 row.names(aggregated_sequence_data) <- aggregated_sequence_data$sex
-aggregated_sequence_data <- aggregated_sequence_data[2:length(aggregated_sequence_data)]
+aggregated_sequence_data <- aggregated_sequence_data[
+  2:length(aggregated_sequence_data)]
 rarecurve(aggregated_sequence_data,
           main = "Species diversity in male vs female hands")
 ```
@@ -1245,7 +1242,7 @@ plot_richness(subsetted_pls_obj,
 
 ### Figure 2. Alpha diversity measures in each gender
 
-This figure shows boxplots that represent the total diversity in both male and femalle hands, using both Shannon and Simpson diversity metrics.
+This figure shows boxplots that represent the total diversity in both male and female hands, using both Shannon and Simpson diversity metrics.
 
 ``` r
 # this code plots the abundance of each phylum present in each sex's hands
@@ -1262,7 +1259,31 @@ plot_bar(subsetted_pls_obj,
 
 ### Figure 3. Abundance of various phylums in each sex
 
-This figure shows a bar graph that represents the relative abundance of bacterial phylums in each hand, sepparated by sex.
+This figure shows a bar graph that represents the relative abundance of bacterial phylums in each hand, separated by sex.
+
+``` r
+# this code looks at the abundance of each phylum in each
+# individual, and again pairs humans with their mice
+ggplot(melted_phyloseq_obj,
+        aes(x = host_subject_id_s,
+            y = Abundance,
+        color = sample_type_s)) +
+  xlab("Individual") +
+  geom_bar(aes(fill = sample_type_s),
+        stat = "Identity",
+        position = "dodge") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1),
+        strip.text.y = element_text(angle = 360)) +
+  ggtitle("Phylum abundance in hands and mice") +
+  facet_grid(Phylum ~ substr(melted_phyloseq_obj$host_subject_id_s, 1, 1),
+             scales = "free_x")
+```
+
+![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/proteobacteria-in-hands-v-mice-1.png)
+
+### Figure 5. Abundance of each phylum in human hands and their respective mice
+
+This figure shows the overall abundance of each phylum in each individual. Once again, it distinguished between each subject's hand and their respective mouse.
 
 ``` r
 # this code looks at the differences in diversity between
@@ -1272,14 +1293,14 @@ plot_richness(phyloseq_obj,
               measures = c("Shannon"),
               color = "sample_type_s") +
   xlab("Individual") +
-  geom_bar(aes(fill = sample_type_s), 
-        stat = "Identity", 
+  geom_bar(aes(fill = sample_type_s),
+        stat = "Identity",
         position = "dodge") +
   ggtitle("Shannon diversity in mice and hands") +
   theme(axis.text.x = element_text(angle = 0, hjust = 1)) +
 # this next line tells R to only consider the first letter
 # of the host ID (M2, F4, etc.), so the figure splits by sex
-  facet_wrap(~ substr(metadata_in$host_subject_id_s, 1, 1),
+  facet_wrap(~ rep(c("F", "M"), each = 10),
              scales = "free_x")
 ```
 
@@ -1292,51 +1313,51 @@ plot_richness(phyloseq_obj,
 
 ![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/male-female-hands-vs-mice-1.png)
 
-### Figure 4. Diversity in human hands compared to their respective mice
+### Figure 5. Diversity in human hands compared to their respective mice
 
 This figure shows the Shannon diversity in each human hand, compared to the respective mouse that individual used.
 
 ``` r
-# this code looks at the abundance of each phylum in each
-# individual, and again pairs humans with their mice
-ggplot(melted_phyloseq_obj,
-        aes(x = host_subject_id_s,
-            y = Abundance,
-        color = sample_type_s)) +
-  xlab("Individual") +
-  geom_bar(aes(fill = sample_type_s), 
-        stat = "Identity", 
-        position = "dodge") +
-  theme(axis.text.x = element_text(angle = 0, hjust = 1),
-        strip.text.y = element_text(angle = 360)) +
-  ggtitle("Phylum abundance in hands and mice") +
-  facet_grid(Phylum ~ substr(melted_phyloseq_obj$host_subject_id_s, 1, 1), 
-             scales = "free_x")
-```
-
-![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/proteobacteria-in-hands-v-mice-1.png)
-
-### Figure 5. Abundance of each phylum in human hands and their respective mice
-
-This figure shows the overall abundance of each phylum in each individual. Once again, it distinguished between each subject's hand and their respective mouse.
-
-``` r
-# phylogeny, yay!
+# this code makes a phylogenetic tree with points colored by individual ID
 plot_tree(phyloseq_obj,
-          color = "sex_s",
-          ladderize = TRUE) # this arranges the tree branches from short to long
+          color = "host_subject_id_s",
+          ladderize = TRUE) +
+# the last line arranges the tree branches from short to long
+  ggtitle("A. Phylogenetic tree colored by host ID")
 ```
 
 ![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/example-phyloseq-plot-2-1.png)
 
-### Figure 2: Inferred phylogeny of sequences
+``` r
+# this code makes a phylogenetic tree with points colored by host sex
+plot_tree(phyloseq_obj,
+          color = "sex_s",
+          ladderize = TRUE) +
+  ggtitle("B. Phylogenetic tree colored by host sex")
+```
 
-This figure shows a phylogenetic tree with points on tips representing samples within which each particular taxa occurred. This tree represents maximum likelihood phylogeny inferred using RAxML.
+![](Analysis_Report_01_amplicons_files/figure-markdown_github-ascii_identifiers/example-phyloseq-plot-2-2.png)
+
+### Figure 6: Inferred phylogeny of sequences
+
+This figure shows a phylogeny tree with points on tips representing samples within which each particular taxa occurred. This tree represents maximum likelihood phylogeny inferred using RAxML.
 
 Discussion
 ==========
 
 Add around 2-3 pages interpreting your results and considering future directions one might take in analyzing these data.
+
+In my analysis of this data, I focused on the interaction between gender and hand microbiome, as well as the reletionship between one's hand microbiome and the inanimate objects they interact with. For human subjects of either sex, and for mouse samples as well, I found that Fierer *et al.* appeared to have samples the full range of bacterial community diversity. Despite the varying sample sizes, every curve in the rarefaction curve forms a plateau after its initially steep incline, indicating that even if more samples were to be included, it is unlikely that the amount of diversity found would change significantly (fig 1).
+
+Interestingly, despite the fact that there was a greater number of sequences for male test subjects, they showed less overall diversity than females, no matter which alpha idversity metrics are used (fig. 2).
+
+Of all the phylums present on human test subjects, the most abundant in both male and female hands was Proteobacteria (fig. 3). Hoewver, it was vastly more common in male hands in terms of both overall abundance and proportion of the overall community makeup (fig. 3). This abundance of proteobacteria could be the reason that male hands show significantly lower diversity than female hands.
+
+While Proteobacteria is present in nearly every individual, most of the less-abundant plylums are only found in one or two of the individuals (fig. 4). That said, there are several phylums that have smallabundance in each undividual, but a larger abundance intjier respective sex as a whole. For example, Actinobacteria is the second most common phylum in female hands (fig. 3), but none of the female hands or mice have a perticularly large abundance of it (fig. 4). Lastly, there does not appear to be a phylum that is prominently found on mice, but absent on human hands (fig. 4). However, the opposite is not true in all cases. For example, while the Bacteriodetes phylum was found in great abundance on several female hands, neither of their respective mice nor any of the other mice show a great abundance of this phylum (fig. 4)
+
+There also appears to be a difference in the amount of diversity between male and female hands and the objects they have touched, as well. Whereas all but one female has more diversity on her hand than on the mouse she touched, the opposite is true in males (fig. 5). While this could be due to the generally low diversity in male hands, this seems unlikely because the diversity on males' mice is not simply higher than the diversity of male hands, but also higher than the diversity in females' mice (fig 5).
+
+A phylogenetic tree of all of the obtained sequences shows that while distinct clades form, there is no apparent pattern between clades and host individuals. There appears to be no strong correlations of certain clades belonging primarily to one indivitual's hand and mouse biome (fig. 6A). While there may be a couple of close nodes that belong to the same individual, there are no large clades that correlate to any one individual. Every large clade appears to contain samples from both sexes as well, although there are several clades that do not contain the 'Not Applicable' sex given to mouse samples (fig. 6B).
 
 Sources Cited
 =============
