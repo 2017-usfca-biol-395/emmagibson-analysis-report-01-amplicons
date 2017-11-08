@@ -37,67 +37,26 @@ Results
 
 # load general-use packages
 library("dplyr")
-```
-
-    ## Warning: package 'dplyr' was built under R version 3.4.2
-
-``` r
 library("tidyr")
-```
-
-    ## Warning: package 'tidyr' was built under R version 3.4.2
-
-``` r
 library("knitr")
-```
-
-    ## Warning: package 'knitr' was built under R version 3.4.2
-
-``` r
 library("ggplot2")
-```
-
-    ## Warning: package 'ggplot2' was built under R version 3.4.2
-
-``` r
 library("vegan")
-```
-
-    ## Warning: package 'vegan' was built under R version 3.4.2
-
-``` r
 library("RColorBrewer")
-```
 
-    ## Warning: package 'RColorBrewer' was built under R version 3.4.1
-
-``` r
 # this package allows for the easy inclusion of literature citations in our Rmd
 # more info here: https://github.com/crsh/citr
 # and here:
 # http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
 library("citr")
-```
 
-    ## Warning: package 'citr' was built under R version 3.4.2
-
-``` r
 # These are the primary packages well use to clean and analyze the data
 # this package needs to be installed from bioconductor -- it's not on CRAN
 # see info here: https://benjjneb.github.io/dada2/dada-installation.html
 library("dada2")
-```
 
-    ## Warning: package 'Rcpp' was built under R version 3.4.2
-
-``` r
 # This to export a fasta of our final denoised sequence variants
 library("seqinr")
-```
 
-    ## Warning: package 'seqinr' was built under R version 3.4.2
-
-``` r
 # To install this you have to install from GitHub
 # See more info here: https://github.com/leffj/mctoolsr
 # run this -- install.packages("devtools")
@@ -676,7 +635,7 @@ unname(taxa)
     ##  [56,] "Bacteria" "Actinobacteria"            "Actinobacteria"     
     ##  [57,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [58,] "Bacteria" "Proteobacteria"            "Gammaproteobacteria"
-    ##  [59,] "Bacteria" NA                          NA                   
+    ##  [59,] "Bacteria" "Proteobacteria"            NA                   
     ##  [60,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [61,] "Bacteria" "Firmicutes"                "Clostridia"         
     ##  [62,] "Bacteria" "Proteobacteria"            "Alphaproteobacteria"
@@ -783,7 +742,7 @@ unname(taxa)
     ## [163,] "Bacteria" "Firmicutes"                "Bacilli"            
     ## [164,] "Bacteria" "Firmicutes"                "Clostridia"         
     ## [165,] "Bacteria" "Nitrospirae"               "Nitrospira"         
-    ## [166,] "Bacteria" NA                          NA                   
+    ## [166,] "Bacteria" "Parcubacteria"             NA                   
     ## [167,] "Bacteria" "Firmicutes"                "Bacilli"            
     ## [168,] "Bacteria" "Proteobacteria"            "Betaproteobacteria" 
     ## [169,] "Bacteria" "Bacteroidetes"             "Sphingobacteriia"   
@@ -937,7 +896,7 @@ unname(taxa)
     ## [140,] "Erysipelotrichales" "Erysipelotrichaceae" 
     ## [141,] "Actinomycetales"    "Mycobacteriaceae"    
     ## [142,] "Actinomycetales"    "Microbacteriaceae"   
-    ## [143,] "Clostridiales"      NA                    
+    ## [143,] "Clostridiales"      "Ruminococcaceae"     
     ## [144,] "Actinomycetales"    "Propionibacteriaceae"
     ## [145,] "Clostridiales"      "Ruminococcaceae"     
     ## [146,] "Actinomycetales"    "Nocardioidaceae"     
@@ -945,7 +904,7 @@ unname(taxa)
     ## [148,] "Sphingobacteriales" "Chitinophagaceae"    
     ## [149,] "Clostridiales"      "Ruminococcaceae"     
     ## [150,] "Sphingomonadales"   "Sphingomonadaceae"   
-    ## [151,] "Actinomycetales"    NA                    
+    ## [151,] "Actinomycetales"    "Nocardiaceae"        
     ## [152,] "Clostridiales"      "Clostridiaceae_1"    
     ## [153,] "Bacteroidales"      "Prevotellaceae"      
     ## [154,] NA                   NA                    
@@ -967,7 +926,7 @@ unname(taxa)
     ## [170,] "Actinomycetales"    "Propionibacteriaceae"
     ## [171,] "Rhizobiales"        "Bradyrhizobiaceae"   
     ## [172,] "Clostridiales"      NA                    
-    ## [173,] "Clostridiales"      "Catabacteriaceae"    
+    ## [173,] "Clostridiales"      NA                    
     ## [174,] "Actinomycetales"    "Nocardiaceae"        
     ## [175,] "Pasteurellales"     "Pasteurellaceae"     
     ## [176,] "Actinomycetales"    "Microbacteriaceae"   
@@ -993,8 +952,8 @@ unname(taxa)
     ##  [19,] NA                         
     ##  [20,] "Diaphorobacter"           
     ##  [21,] NA                         
-    ##  [22,] "Intestinimonas"           
-    ##  [23,] "Clostridium_IV"           
+    ##  [22,] NA                         
+    ##  [23,] NA                         
     ##  [24,] NA                         
     ##  [25,] "Pelomonas"                
     ##  [26,] NA                         
@@ -1002,7 +961,7 @@ unname(taxa)
     ##  [28,] "Streptomyces"             
     ##  [29,] NA                         
     ##  [30,] "Sphingobium"              
-    ##  [31,] NA                         
+    ##  [31,] "Marmoricola"              
     ##  [32,] "Streptomyces"             
     ##  [33,] "Salinibacterium"          
     ##  [34,] "Streptomyces"             
@@ -1019,7 +978,7 @@ unname(taxa)
     ##  [45,] "Pseudomonas"              
     ##  [46,] "Streptomyces"             
     ##  [47,] NA                         
-    ##  [48,] NA                         
+    ##  [48,] "Pelomonas"                
     ##  [49,] "Microbacterium"           
     ##  [50,] "Mycobacterium"            
     ##  [51,] "Marmoricola"              
@@ -1036,7 +995,7 @@ unname(taxa)
     ##  [62,] "Microvirga"               
     ##  [63,] NA                         
     ##  [64,] "Arthrobacter"             
-    ##  [65,] "Marmoricola"              
+    ##  [65,] NA                         
     ##  [66,] "Microbacterium"           
     ##  [67,] "Sphingomonas"             
     ##  [68,] NA                         
@@ -1059,7 +1018,7 @@ unname(taxa)
     ##  [85,] "Massilia"                 
     ##  [86,] "Bartonella"               
     ##  [87,] NA                         
-    ##  [88,] "Ruminococcus"             
+    ##  [88,] NA                         
     ##  [89,] "Pseudomonas"              
     ##  [90,] "Azonexus"                 
     ##  [91,] "Gemmatimonas"             
@@ -1111,7 +1070,7 @@ unname(taxa)
     ## [137,] "Stappia"                  
     ## [138,] NA                         
     ## [139,] "Massilia"                 
-    ## [140,] NA                         
+    ## [140,] "Erysipelothrix"           
     ## [141,] "Mycobacterium"            
     ## [142,] "Microbacterium"           
     ## [143,] NA                         
@@ -1141,12 +1100,12 @@ unname(taxa)
     ## [167,] "Paenibacillus"            
     ## [168,] NA                         
     ## [169,] "Flavitalea"               
-    ## [170,] "Tessaracoccus"            
+    ## [170,] NA                         
     ## [171,] "Rhodopseudomonas"         
     ## [172,] NA                         
-    ## [173,] "Catabacter"               
+    ## [173,] NA                         
     ## [174,] NA                         
-    ## [175,] NA                         
+    ## [175,] "Nicoletella"              
     ## [176,] "Agrococcus"
 
 ``` r
@@ -1357,7 +1316,7 @@ Of all the phyla present on human test subjects, the most abundant in both male 
 
 While *proteobacteria* is present in nearly every individual, most of the less-abundant phyla are only found in one or two of the individuals (fig. 4). That said, there are several phyla that have small abundance in each individual, but a larger abundance in their respective sex as a whole. For example, *actinobacteria* is the second most common phylum in female hands (fig. 3), but none of the female hands or mice have a particularly large abundance of it (fig. 4). This is unsurprising, as *actinobacteria* is a phylum of relatively common soil bacterium that one might expect to find in the environment, but would not necessarily thrive on a human hand. The *firmicutes* phylum shows a similar abundance pattern in both sexes, where it is present in small quantities on nearly every individual's hand (fig. 4). Like *proteobacteria*, *firmicutes* contains a wide variety of species, from pathogens to common gut symbiotes. The species found on the subjects' hands were likely from their gut microbiome, however, as *firmicutes* is one of the most common phyla in the human gut microbiome. (Ley *et al.*, 2006) Therefore, it is unsurprising to find this phylum on human hands, as is known to exist in other parts of the body.
 
-There does not appear to be a phylum that is prominently found on mice, but absent on human hands (fig. 4). However, the opposite is not true in all cases. For example, while the *bacteroidetes* phylum was found in great abundance on several female hands, neither of their respective mice nor any of the other mice show a great abundance of this phylum (fig. 4). Most individuals have patterns of *bacteriodetes* abundance comparable to *firmicutes*, with a small amount present in each individual. Again, this makes sense because *bacteriodetes*, together with *firmicutes*, make up around 98% of the mammalian gut microbiome. (Ley *et al.*, 2006) However, two female individuals show a much larger abundance of it on their hands, but not on their respective mice. It makes sense that *bacteroidetes* was more common on female hands than male hands, given that it is known to be part of the placenta microbiome, and its prominence on these womens' hands could indicate several thins about their physiological state (Mor and Kwon, 2015). For instance, they could be pregnant or in a different phase of their menstrual cycle from the other female test subjects. However, this would not explain why it was so abundant on their hands, yet absent on the computer mice they used.
+There does not appear to be a phylum that is prominently found on human hands, but absent on mice (fig. 4). However, the opposite is not true in all cases. For example, while the *bacteroidetes* phylum was found in great abundance on several female mice, neither of their respective hands nor any of the other hands show a great abundance of this phylum (fig. 4). Most individuals have patterns of *bacteriodetes* abundance comparable to *firmicutes*, with a small amount present in each individual. Again, this makes sense because *bacteriodetes*, together with *firmicutes*, make up around 98% of the mammalian gut microbiome. (Ley *et al.*, 2006) However, two female individuals show a much larger abundance of it on their mice, but not on their respective hands. It makes sense that *bacteroidetes* was more common on female subjects than male subjects, given that it is known to be part of the placenta microbiome, and its prominence on these womens' hands could indicate several thins about their physiological state (Mor and Kwon, 2015). For instance, they could be pregnant or in a different phase of their menstrual cycle from the other female test subjects. However, this would not explain why it was so abundant on their mice, yet absent on their actual hands.
 
 There also appears to be a difference in the amount of diversity between male and female hands and the objects they have touched, as well. Whereas all but one female has more diversity on her hand than on the mouse she touched, the opposite is true in males (fig. 5). While this could be due to the generally low diversity in male hands, this seems unlikely because the diversity on males' mice is not simply higher than the diversity of male hands, but also higher than the diversity in females' mice (fig 5). This could be due to the fact that *proteobacteria* is less abundant in male computer mice than it is in male hands (fig. 4). One possible explanation for why *proteobacteria* is more abundant on male hands than male mice is that the environment of the skin is favorable for their growth. If this is true, then the only *proteobacteria* found on mice would be there because it rubbed off from a human hand, but those on the human hand might be the progeny of the original bacteria that landed and proliferated there.
 
